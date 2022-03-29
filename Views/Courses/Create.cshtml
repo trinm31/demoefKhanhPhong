@@ -1,0 +1,22 @@
+@model DemoEfCoreKhanhPhong.ViewModels.CourseVM
+
+@{
+    Layout = "_Layout";
+}
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Course.Name"></label>
+        <input type="text" asp-for="Course.Name" class="form-control" >
+        <span class="text-danger" asp-validation-for="Course.Name"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Course.CategoryId"></label>
+        @Html.DropDownListFor(m=> m.Course.CategoryId, Model.CategoryList , 
+            "--Please Select a Category" , new {@class= "form-control"})
+        <span class="text-danger" asp-validation-for="Course.CategoryId"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
